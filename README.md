@@ -1,6 +1,6 @@
 This project is more focused on designing a game engine, and there is also a sample game that unfortunately could not be completed due to issues with art.
 
-This project can be run on windows simply by running the .bat file.
+This project can be run on Windows simply by running the .bat file.
 
 Controls:
 "z" for interacting, "x" for cancelling
