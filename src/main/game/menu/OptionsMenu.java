@@ -34,10 +34,6 @@ public class OptionsMenu implements Menu{
         this.selector = game.Utils.loadImage("selector.png");
     }
 
-    /**
-     * Draws the options menu
-     * @param g
-     */
     public void draw(Graphics2D g){
         Rectangle2D rect = g.getFontMetrics().getStringBounds("OPTIONS", g);
         Rectangle2D rect1 = g.getFontMetrics().getStringBounds("You have no other options.", g);
@@ -71,6 +67,4 @@ public class OptionsMenu implements Menu{
     public void update(){}
     public void moveUp(){}
     public void moveDown(){}
-    public void moveLeft(){}
-    public void moveRight(){}
 }

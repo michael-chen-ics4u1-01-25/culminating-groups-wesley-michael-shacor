@@ -4,7 +4,11 @@ import java.util.Arrays;
 
 import game.menu.Dialogue;
 
-public class Player extends Character{
+public class Player extends Character {
+    /**
+     * @version 1.0
+     * @author Wesley, Michael, Shacor
+     */
     public double[][] trail;
     private final static double INTERACTION_DISTANCE = 16;
     int upPrecedence;
@@ -18,6 +22,10 @@ public class Player extends Character{
     private double hitpoints = 500;
     private double percentHP;
 
+    /**
+     * Constructor for Player
+     * @param following The number of following characters
+     */
     public Player(int following) {
         super(new SpriteSheet("mc.png", 32, 32, 2.0, 0), 48, 58, 10, 6);
         this.trail = new double[following*TRAIL_SEPARATION][3];
@@ -27,6 +35,10 @@ public class Player extends Character{
         this.percentHP = this.hitpoints/this.maxHitpoints;
     }
 
+    /**
+     * Move the player based on key pressed
+     * @param key The key pressed
+     */
     public void movePlayer(char key) {
         switch(key){
             case 'w': upPrecedence = downPrecedence+1; break;
@@ -39,6 +51,10 @@ public class Player extends Character{
         calculateFacing();
     }
 
+    /**
+     * Stop the player based on key released
+     * @param key The key released
+     */
     public void stopPlayer(char key) {
         switch(key){
             case 'w': upPrecedence = downPrecedence==2?--downPrecedence-1:0; break;
@@ -51,6 +67,10 @@ public class Player extends Character{
         calculateFacing();
     }
 
+    /**
+     * Interact with objects
+     * @param objects The list of interactable objects
+     */
     public void interact(ArrayList<Drawable> objects){
         for(Drawable object : objects){
             boolean inXRange = (object.getX() < x && x < object.getX() + object.getWidth()) || (object.getX() < x + width && x + width < object.getX() + object.getWidth());
@@ -71,6 +91,9 @@ public class Player extends Character{
         }
     }
 
+    /**
+     * Calculate the facing direction
+     */
     private void calculateFacing(){
         if(this.yPrecedence >= this.xPrecedence){
             if(this.upPrecedence > this.downPrecedence){
@@ -87,14 +110,26 @@ public class Player extends Character{
         }
     }
 
+    /**
+     * Check if the player is moving
+     * @return Whether the player is moving
+     */
     public boolean isMoving(){
         return this.xPrecedence != this.yPrecedence;
     }
 
+    /**
+     * Get the percent hitpoints
+     * @return The percent hitpoints
+     */
     public double getPercentHitpoints(){
         return this.percentHP;
     }
 
+    /**
+     * Update the player
+     * @param objects Objects to check collisions with
+     */
     public void update(/*  Tile[][] map, */ArrayList<Drawable> objects){
         double minX = 1;
         double minY = 1;

@@ -13,6 +13,10 @@ public class Enemy extends Character{
     private static final int UP = 3, DOWN = 0, RIGHT = 2, LEFT = 1;
     private int attack = 1;
 
+    /**
+     * Constructor for Enemy
+     * @param player The player to attack
+     */
     public Enemy(Player player) {
         super(new SpriteSheet("mc.png", 32, 32, 2.0, 0), 48, 58, 10, 6);
         this.player = player;
@@ -20,6 +24,9 @@ public class Enemy extends Character{
         super.diagSpeed = 2*Math.sqrt(speed);
     }
 
+    /**
+     * Make the enemy attack the player
+     */
     public void attackPlayer() {
         this.leftPrecedence = 0;
         this.rightPrecedence = 0;
@@ -44,10 +51,18 @@ public class Enemy extends Character{
 
     }
 
+    /**
+     * Get the attack value
+     * @return The attack value
+     */
     public int getAttack() {
         return this.attack;
     }
 
+    /**
+     * Update the enemy
+     * @param objects
+     */
     @Override
     public void update(ArrayList<Drawable> objects){
         double minX = 1;

@@ -30,10 +30,6 @@ public class Dialogue implements Menu{
         this.text = text;
     }
 
-    /**
-     * Draws a dialogue box
-     * @param g The graphics context to draw on
-     */
     public void draw(Graphics2D g){
         Utils.drawTextBox(g, curtext, (WIDTH-BOX_WIDTH)/2, HEIGHT/4*3, BOX_WIDTH, BOX_HEIGHT, 0);
     }
@@ -61,6 +57,4 @@ public class Dialogue implements Menu{
 
     public void moveUp(){}
     public void moveDown(){}
-    public void moveLeft(){}
-    public void moveRight(){}
 }

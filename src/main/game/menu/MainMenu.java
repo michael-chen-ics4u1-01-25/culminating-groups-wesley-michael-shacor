@@ -43,10 +43,6 @@ public class MainMenu implements Menu{
     final static int STUFF_SIZE = 5;
     int currentOption = 0;
 
-    /**
-     * Draws the main menu
-     * @param g The graphics context to draw on
-     */
     public void draw(Graphics2D g){
         g.setColor(new Color(145, 145, 145));
         for(int i = 0; i < stuff.length; i++){
@@ -92,24 +88,15 @@ public class MainMenu implements Menu{
     public void cancel(){
     }
 
-    /**
-     * Moves the selector up
-     */
     public void moveUp(){
         if(currentOption > 0){
             currentOption--;
         }
     }
 
-    /**
-     * Moves the selector down
-     */
     public void moveDown(){
         if(currentOption < OPTIONS-1){
             currentOption++;
         }
     }
-    
-    public void moveLeft(){}
-    public void moveRight(){}
 }

@@ -21,10 +21,6 @@ public class DeathMenu implements Menu{
         this.selector = game.Utils.loadImage("selector.png");
     }
 
-    /**
-     * Draws the death menu
-     * @param g The graphics context to draw on
-     */
     public void draw(Graphics2D g){
         Rectangle2D rect = g.getFontMetrics().getStringBounds("OPTIONS", g);
         Rectangle2D rect1 = g.getFontMetrics().getStringBounds("You have no other options.", g);
@@ -54,6 +50,4 @@ public class DeathMenu implements Menu{
     public void update(){}
     public void moveUp(){}
     public void moveDown(){}
-    public void moveLeft(){}
-    public void moveRight(){}
 }

@@ -55,7 +55,7 @@ public class Character implements Movable, Drawable{
         this.following = null;
         this.trailIndex = 0;
         this.elevation = 0;
-        this.isJumping = false;
+        // this.isJumping = false;
         // this.isMoving = false;
     }
 
@@ -75,17 +75,22 @@ public class Character implements Movable, Drawable{
         g.drawRect((int)(x-xoffset), (int)(y-yoffset), (int)64, (int)64);
     }
 
+    /**
+     * Make the character follow a player
+     * @param player The player to follow
+     * @param offset The offset from the player
+     */
     public void followPlayer(Player player, int offset){
         this.following = player;
         this.trailIndex = offset*TRAIL_SEPARATION;
     }
 
-    public void jump(){
-        System.out.println("DSFSD");
-        this.isJumping = true;
-        this.startY = y;
-        this.yVel = -10;
-    }
+    // public void jump(){
+    //     System.out.println("DSFSD");
+    //     this.isJumping = true;
+    //     this.startY = y;
+    //     this.yVel = -10;
+    // }
     //was going to be used for cutscenes, but after scrapping a major portion of the game, it was no longer necessary
     //public void xMove(int xMovement) {
     //    this.isMoving = true;
@@ -110,6 +115,14 @@ public class Character implements Movable, Drawable{
 //
     //}
 
+    /**
+     * Calculate time an objects collides for
+     * @param object The object to check collision with
+     * @param xAxis Whether to check x axis
+     * @param speed The speed of the object
+     * @param plusminus Whether to check positive or negative direction
+     * @return The time of collision
+     */
     protected double collisionTime(Drawable object, boolean xAxis, double speed, boolean plusminus){
         double axisMinThis = xAxis ? this.x : this.y;
         double axisMaxThis = xAxis ? this.x + this.width : this.y + this.height;
@@ -131,6 +144,10 @@ public class Character implements Movable, Drawable{
         return 1;
     }
 
+    /**
+     * Update the character
+     * @param objects
+     */
     public void update(ArrayList<Drawable> objects){
         //if (this.isMoving) {
         //    if (this.xVel>0) {

@@ -69,16 +69,6 @@ public class LoadSaveMenu implements Menu {
         if (currentOption < TOTAL_SAVES - 1) currentOption++;
     }
 
-    @Override
-    public void moveLeft() {
-
-    }
-
-    @Override
-    public void moveRight() {
-
-    }
-
     /**
      * Selects the current highlighted save slot
      */
