@@ -7,9 +7,17 @@ import java.awt.Color;
 
 
 public class MainMenu implements Menu{
+    /**
+     * @version 1.0
+     * @author Wesley, Michael, Shacor
+     */
     private Image title;
     private Image selector;
     private double[][] stuff;
+
+    /**
+     * Constructs a MainMenu
+     */
     public MainMenu(){
         this.title = game.Utils.loadImage("thosewhosee.png");
         this.selector = game.Utils.loadImage("selector.png");
@@ -35,6 +43,10 @@ public class MainMenu implements Menu{
     final static int STUFF_SIZE = 5;
     int currentOption = 0;
 
+    /**
+     * Draws the main menu
+     * @param g The graphics context to draw on
+     */
     public void draw(Graphics2D g){
         g.setColor(new Color(145, 145, 145));
         for(int i = 0; i < stuff.length; i++){
@@ -45,13 +57,16 @@ public class MainMenu implements Menu{
         g.drawImage(this.title, (WIDTH-TITLE_WIDTH)/2, (HEIGHT-TITLE_HEIGHT)/5, null);
         Rectangle2D start = game.Utils.drawTextBox(g, "START", (WIDTH-BUTTON_WIDTH)/2, (HEIGHT-BUTTON_HEIGHT)/4*2, BUTTON_WIDTH, BUTTON_HEIGHT, 1);
         Rectangle2D options = game.Utils.drawTextBox(g, "OPTIONS", (WIDTH-BUTTON_WIDTH)/2, (HEIGHT-BUTTON_HEIGHT)/4*3, BUTTON_WIDTH, BUTTON_HEIGHT, 1);
-        if(currentOption == 0){ // select
+        if(currentOption == 0){ 
             g.drawImage(this.selector, (int)start.getMaxX() + SELECT_PADDING, (int)(start.getMinY()-start.getHeight())-SELECT_HEIGHT/3, null);
         }else{
             g.drawImage(this.selector, (int)options.getMaxX() + SELECT_PADDING, (int)(options.getMinY()-options.getHeight())-SELECT_HEIGHT/3, null);
         }
     }
 
+    /**
+     * Updates the main menu
+     */
     public void update(){
         for(int i = 0; i < stuff.length; i++){
             stuff[i][0] -= (Math.random())*4;
@@ -63,6 +78,9 @@ public class MainMenu implements Menu{
         }
     }
 
+    /**
+     * Selects the current option
+     */
     public void select(){
         if(currentOption == 0){
             game.Main.swapToSave();
@@ -74,12 +92,18 @@ public class MainMenu implements Menu{
     public void cancel(){
     }
 
+    /**
+     * Moves the selector up
+     */
     public void moveUp(){
         if(currentOption > 0){
             currentOption--;
         }
     }
 
+    /**
+     * Moves the selector down
+     */
     public void moveDown(){
         if(currentOption < OPTIONS-1){
             currentOption++;
